@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.administrator.im.R;
+import com.gyf.barlibrary.ImmersionBar;
 
 /**
  * Created by Administrator on 2018/7/9.
@@ -23,16 +24,26 @@ public abstract class BaseActivity extends AppCompatActivity {
     /***获取TAG的activity名称**/
     protected final String TAG = this.getClass().getSimpleName();
     private Toolbar toolbar;
+    private ImmersionBar mImmersionBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置布局
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.init();   //所有子类都将继承这些相同的属性
         setContentView(intiLayout());
         //初始化控件
         initView();
         //设置数据
         initData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mImmersionBar != null)
+            mImmersionBar.destroy();  //必须调用该方法，防止内存泄漏，不调用该方法，如果界面bar发生改变，在不关闭app的情况下，退出此界面再进入将记忆最后一次bar改变的状态
     }
 
     public BaseActivity initToolBar() {
@@ -54,6 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(var);
         return this;
     }
+
     public BaseActivity setToolNavigationIcoOnClickListener(final OnClickListener onClickListener) {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,9 +75,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
         return this;
     }
-    public interface OnClickListener{
+
+    public interface OnClickListener {
         void OnClickListener();
     }
+
     /**
      * 设置布局
      *

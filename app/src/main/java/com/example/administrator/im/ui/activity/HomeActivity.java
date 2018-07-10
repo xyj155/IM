@@ -11,8 +11,8 @@ import com.example.administrator.im.base.BaseActivity;
 import com.example.administrator.im.ui.fragment.FragmentChatFriends;
 import com.example.administrator.im.ui.fragment.FragmentCommunity;
 import com.example.administrator.im.ui.fragment.FragmentHome;
-import com.example.administrator.im.ui.fragment.FragmentMap;
-import com.example.administrator.im.ui.fragment.FragmentUser;
+import com.example.administrator.im.ui.fragment.around.FragmentMap;
+import com.example.administrator.im.ui.fragment.user.FragmentUser;
 
 public class HomeActivity extends BaseActivity {
     private RadioGroup rgMain;

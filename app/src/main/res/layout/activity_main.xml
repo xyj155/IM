@@ -15,16 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/framlayout"
+        android:background="#ffffff"
         android:orientation="horizontal"
         android:weightSum="5">
 
         <RadioButton
-            android:checked="true"
             android:id="@+id/rbt_purse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
+            android:checked="true"
             android:drawablePadding="2dp"
             android:drawableTop="@drawable/bottom_bottom_select1"
             android:gravity="center"

@@ -4,16 +4,20 @@
     android:layout_height="match_parent"    android:layout_marginTop="20dp"
     android:orientation="vertical">
 
-
-    <com.example.administrator.im.view.pagerstrip.PagerSlidingTabStrip
-        android:id="@+id/tp_community"
-        android:background="@color/white"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:background="#fff">
 
+        <com.example.administrator.im.view.pagerstrip.PagerSlidingTabStrip
+            android:id="@+id/map_pagerstrip"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_community"
+        android:id="@+id/map_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

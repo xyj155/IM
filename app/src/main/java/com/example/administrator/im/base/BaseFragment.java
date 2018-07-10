@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import butterknife.ButterKnife;
 
 /**
@@ -23,11 +25,11 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mContentView = inflater.inflate(setLayoutResourceID(),container,false);
-
+        ImmersionBar.with(this).init();
         ButterKnife.bind(this,mContentView);
         mContext = getContext();
         init();
-        setUpView(mContentView);
+        setUpView(mContentView,savedInstanceState);
         setUpData();
         return mContentView;
     }
@@ -42,7 +44,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 一些View的相关操作
      */
-    protected abstract void setUpView(View view);
+    protected abstract void setUpView(View view,Bundle bundle);
 
     /**
      * 一些Data的相关操作

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/white"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
+
+
+                    <LinearLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="35dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:drawableLeft="@mipmap/ic_user_detai"
+                            android:drawablePadding="15sp"
+                            android:drawableRight="@mipmap/ic_go"
+                            android:gravity="center|left"
+                            android:padding="10dp"
+                            android:text="个人信息"
+                            android:textColor="#000" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#fafafa" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:drawableLeft="@mipmap/ic_user_message"
+                            android:drawablePadding="15sp"
+                            android:drawableRight="@mipmap/ic_go"
+                            android:gravity="center|left"
+                            android:padding="10dp"
+                            android:text="浙江.嘉兴"
+                            android:textColor="#000" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#fafafa" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:drawableLeft="@mipmap/ic_user_usage"
+                            android:drawablePadding="15sp"
+                            android:drawableRight="@mipmap/ic_go"
+                            android:gravity="center|left"
+                            android:padding="10dp"
+                            android:text="我的投稿"
+                            android:textColor="#000" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#fafafa" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:drawableLeft="@mipmap/ic_user_tag"
+                            android:drawablePadding="15sp"
+                            android:drawableRight="@mipmap/ic_go"
+                            android:gravity="center|left"
+                            android:padding="10dp"
+                            android:text="我的标签"
+                            android:textColor="#000" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#fafafa" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:drawableLeft="@mipmap/ic_user_notification"
+                            android:drawablePadding="15sp"
+                            android:drawableRight="@mipmap/ic_go"
+                            android:gravity="center|left"
+                            android:padding="10dp"
+                            android:text="提醒"
+                            android:textColor="#000" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="25dp"
+                            android:background="#fafafa" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:drawableLeft="@mipmap/ic_user_setting"
+                            android:drawablePadding="15sp"
+                            android:drawableRight="@mipmap/ic_go"
+                            android:gravity="center|left"
+                            android:padding="10dp"
+                            android:text="设置"
+                            android:textColor="#000" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    android:background="@drawable/btn_user_white_bg"
+                    android:text="点击修改资料信息" />
+
+            </LinearLayout>
+
+            <com.example.administrator.im.view.CircleImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:border_color="#fafafa"
+                app:border_width="1.5dp"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="15sp"
+                android:src="@mipmap/ic_im" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|right"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/ic_bookmark_24dp" />
+        </FrameLayout>
+
+    </RelativeLayout>
