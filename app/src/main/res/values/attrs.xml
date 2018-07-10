@@ -15,10 +15,13 @@
         <attr name="pstsTextAllCaps" format="boolean" />
         <attr name="pstsIndicatorWeight" format="integer" />
     </declare-styleable>
-    <declare-styleable name="CircleImageView">
-        <attr name="border_width" format="dimension" />
-        <attr name="border_color" format="color" />
-    </declare-styleable>
+
+        <declare-styleable name="CircleImageView">
+            <attr name="civ_border_width" format="dimension" />
+            <attr name="civ_border_color" format="color" />
+            <attr name="civ_border_overlay" format="boolean" />
+            <attr name="civ_fill_color" format="color" />
+        </declare-styleable>
     <declare-styleable name="MZBannerView">
         <attr name="open_mz_mode" format="boolean"/>
         <attr name="canLoop" format="boolean"/>

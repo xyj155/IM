@@ -3,6 +3,7 @@ package com.example.administrator.im.ui.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.administrator.im.R;
@@ -28,6 +29,8 @@ public class FragmentCommunity extends BaseFragment {
 
     @Override
     protected void setUpView(View view, Bundle bundle) {
+        Toolbar viewById = view.findViewById(R.id.toolbar);
+        viewById.setTitle("友圈");
         pgCommunity = (ViewPager) view.findViewById(R.id.vp_community);
         titlePageIndicator = view.findViewById(R.id.tp_community);
         titlePageIndicator.setIndicatorColor(0xffffffff);

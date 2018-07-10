@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"    android:layout_marginTop="20dp"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:background="@color/white"
+    android:orientation="vertical">
 
+    <include layout="@layout/commontoolbar" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#fafafa" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_news"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/ic_go"
+        android:gravity="center|left"
+        android:padding="@dimen/dp_10"
+        android:text="新偶遇"
+        android:textColor="@color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#fafafa" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableLeft="@mipmap/ic_newchat"
+        android:drawablePadding="8dp"
+        android:drawableRight="@mipmap/ic_go"
+        android:gravity="center|left"
+        android:padding="@dimen/dp_10"
+        android:text="添加好友"
+        android:textColor="@color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#fafafa" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ry_contact"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

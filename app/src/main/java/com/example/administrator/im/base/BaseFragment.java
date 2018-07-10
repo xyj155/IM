@@ -21,17 +21,28 @@ public abstract class BaseFragment extends Fragment {
     private View mContentView;
     private Context mContext;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mContentView = inflater.inflate(setLayoutResourceID(),container,false);
-        ImmersionBar.with(this).init();
-        ButterKnife.bind(this,mContentView);
+        mContentView = inflater.inflate(setLayoutResourceID(), container, false);
+
+        ButterKnife.bind(this, mContentView);
         mContext = getContext();
         init();
-        setUpView(mContentView,savedInstanceState);
-        setUpData();
+
+            setUpView(mContentView, savedInstanceState);
+            setUpData();
+
+
         return mContentView;
+    }
+
+    public void isStatusBar(boolean isStatusBar) {
+        if (isStatusBar){
+            ImmersionBar.with(this).init();
+        }
+
     }
 
     /**
@@ -44,7 +55,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 一些View的相关操作
      */
-    protected abstract void setUpView(View view,Bundle bundle);
+    protected abstract void setUpView(View view, Bundle bundle);
 
     /**
      * 一些Data的相关操作
@@ -55,7 +66,8 @@ public abstract class BaseFragment extends Fragment {
      * 此方法用于初始化成员变量及获取Intent传递过来的数据
      * 注意：这个方法中不能调用所有的View，因为View还没有被初始化，要使用View在initView方法中调用
      */
-    protected void init() {}
+    protected void init() {
+    }
 
     public View getContentView() {
         return mContentView;

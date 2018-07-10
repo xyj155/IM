@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -51,9 +52,10 @@ public class FragmentMap extends BaseFragment implements AMap.OnMyLocationChange
     private MZBannerView mMZBanner;
     private NestedScrollView scrollview;
     private Toolbar toolbar;
-    private View views;
+    //    private View views;
     private int mHeight;
-private TextView tv_title;
+    private BottomSheetDialog bottomSheetDialog;
+
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_main_map;
@@ -61,13 +63,15 @@ private TextView tv_title;
 
     @Override
     protected void setUpView(View view, Bundle savedInstanceState) {
+        isStatusBar(false);
         mMapView = (MapView) view.findViewById(R.id.map);
-        tv_title=view.findViewById(R.id.tv_title);
-        views = view.findViewById(R.id.view);
+        bottomSheetDialog = new BottomSheetDialog(getContext());
+
+//        views = view.findViewById(R.id.view);
         toolbar = view.findViewById(R.id.toolbar);
         scrollview = view.findViewById(R.id.scrollView);
         ry_map = view.findViewById(R.id.ry_map);
-        mMapView.onCreate(savedInstanceState);// 此方法必须重写
+        mMapView.onCreate(savedInstanceState);
         mMZBanner = (MZBannerView) view.findViewById(R.id.banner_map);
     }
 
@@ -91,32 +95,19 @@ private TextView tv_title;
 
     @Override
     protected void setUpData() {
-        mHeight = views.getHeight();
-        scrollview.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (scrollY <= 0) {  //设置标题的背景颜色
-                    toolbar.setBackgroundColor(Color.argb((int) 0, 144,151,166));
-                    System.out.println("0");
-                    tv_title.setText("");
-                } else if (scrollY > 0 && scrollY <= 450) { //滑动距离小于banner图的高度时，设置背景和字体颜色颜色透明度渐变
-                    float scale = (float) scrollY / 450;
-                    float alpha = (255 * scale);
-                    System.out.println("1");
-                    tv_title.setText("附近");
-//                    toolbar.setTextColor(Color.argb((int) alpha, 255,255,255));
-                    toolbar.setBackgroundColor(Color.argb((int) alpha, 255,255,255));
-                } else {  //滑动到banner下面设置普通颜色
-                    System.out.println("2");
-                    tv_title.setText("附近");
-                    toolbar.setBackgroundColor(Color.argb((int) 255, 255,255,255));
-                }
-            }
-        });
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(scrollview);
+        behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+//        if (behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+//            behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//        } else {
+//            behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//        }
+//        mHeight = views.getHeight();
+
 
         ry_map.setLayoutManager(new LinearLayoutManager(getActivity()));
         List<String> lis = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 50; i++) {
             lis.add("条目：" + i);
         }
         TestAdapter a = new TestAdapter(lis);

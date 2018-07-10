@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
 
     <com.amap.api.maps.MapView
@@ -13,35 +15,23 @@
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:behavior_peekHeight="270dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="1dp"
-                android:layout_height="400dp" />
 
             <include layout="@layout/inclue_map_list" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="60dp" />
+
         </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="70dp" >
-        <TextView
-            android:gravity="center|left"
-            android:paddingTop="15dp"
-            android:paddingLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/tv_title"/>
-    </android.support.v7.widget.Toolbar>
-</FrameLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

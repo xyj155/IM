@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.administrator.im.view.CircleImageView
+            android:id="@+id/img_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/tv_username"
+                android:gravity="center|left"
+                android:text="我的好友"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_style"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingLeft="5dp"
+                android:paddingRight="@dimen/dp_10"
+                android:text="我的个性签名我的个性签名我的个性签名我的个性签名我的个性签名" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:background="#fafafa"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+</LinearLayout>
