@@ -114,7 +114,10 @@
         <activity android:name=".ui.activity.HomeActivity">
 
         </activity>
-        <activity android:name=".ui.activity.ContactActivity">
+        <activity android:name=".ui.activity.ContactActivity" />
+        <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.NotificatonActivity" />
+        <activity android:name=".ui.activity.LoginAndRegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,7 +1,14 @@
 package com.example.administrator.im.ui.activity;
 
+import android.os.Build;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,7 +28,7 @@ import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.api.BasicCallback;
 
-public class ContactActivity extends BaseActivity {
+public class ContactActivity extends AppCompatActivity {
     private RecyclerView ry_contact;
     private ImageView btn_send;
     private EditText et_content;
@@ -31,28 +38,33 @@ public class ContactActivity extends BaseActivity {
     private Conversation mConversation;
 
     @Override
-    public int intiLayout() {
-        return R.layout.activity_contact;
+    public void onCreate( Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contact);
+        initView();
+        initData();
     }
 
-    @Override
+
     public void initView() {
         ry_contact = (RecyclerView) findViewById(R.id.ry_contact);
         ry_contact.setLayoutManager(new LinearLayoutManager(ContactActivity.this));
         btn_send = (ImageView) findViewById(R.id.btn_send);
         et_content = (EditText) findViewById(R.id.et_content);
-        initToolBar().setToolBarSubTitle("和徐易杰对话中.....")
-        .setToolNavigationIco(R.mipmap.ic_back).setToolNavigationIcoOnClickListener(new OnClickListener() {
+        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setSubtitle("和徐易杰对话中.....");
+        toolbar.setNavigationIcon(R.mipmap.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void OnClickListener() {
+            public void onClick(View view) {
                 finish();
             }
         });
+
     }
 
 
 
-    @Override
     public void initData() {
         IMUtils.login("123456", "123456", new BasicCallback() {
             @Override
