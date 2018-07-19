@@ -111,13 +111,33 @@
             android:name="JPUSH_APPKEY"
             android:value="54ed271d14ebddc5903bc9cb" />
 
-        <activity android:name=".ui.activity.HomeActivity">
-
-        </activity>
+        <activity android:name=".ui.activity.HomeActivity"></activity>
         <activity android:name=".ui.activity.ContactActivity" />
         <activity android:name=".ui.activity.SettingActivity" />
         <activity android:name=".ui.activity.NotificatonActivity" />
         <activity android:name=".ui.activity.LoginAndRegisterActivity">
+        </activity>
+        <activity
+            android:name=".pictureSelector.ui.ISListActivity" />
+
+        <activity
+            android:name=".pictureSelector.ui.ISCameraActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <meta-data
+            android:name="APP_ID"
+            android:value="${applicationId}" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

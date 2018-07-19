@@ -16,7 +16,7 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:behavior_peekHeight="270dp"
+        app:behavior_peekHeight="150dp"
         app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
         <LinearLayout

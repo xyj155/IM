@@ -2,16 +2,12 @@ package com.example.administrator.im.ui.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.administrator.im.R;
 import com.example.administrator.im.base.BaseActivity;
-import com.example.administrator.im.ui.fragment.FragmentCommunity;
-import com.example.administrator.im.ui.fragment.FragmentHome;
 import com.example.administrator.im.ui.fragment.login.LoginFragment;
 import com.example.administrator.im.ui.fragment.login.RegisterFragment;
 
@@ -74,7 +70,6 @@ public class LoginAndRegisterActivity extends BaseActivity {
 
     }
 
-    //隐藏所有Fragment
     public void hideAllFragment(FragmentTransaction transaction) {
         if (loginFragment != null) {
             transaction.hide(loginFragment);

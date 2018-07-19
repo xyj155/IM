@@ -1,5 +1,6 @@
 package com.example.administrator.im.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.administrator.im.R;
+import com.example.administrator.im.ui.activity.ContactActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +59,13 @@ public class FragmentChatFriends extends Fragment {
         protected void convert(BaseViewHolder helper, User item) {
             ImageView logoview = helper.getView(R.id.img_head);
             helper.setText(R.id.tv_username, item.getUsernanme())
-                    .setText(R.id.tv_style, item.getStyle());
+                    .setText(R.id.tv_style, item.getStyle())
+            .setOnClickListener(R.id.ll_contact, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getContext(), ContactActivity.class));
+                }
+            });
             Glide.with(getActivity()).load(item.getUserhead()).asBitmap().into(logoview);
         }
     }

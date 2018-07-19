@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.example.administrator.im.view.CircleImageView
+        android:layout_width="70dp"
+        android:id="@+id/img_user_head"
+     android:layout_margin="5dp"
+        android:layout_height="70dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/tv_username"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLength="15"
+            android:paddingLeft="15dp"
+            android:text="我是你爸爸"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/tv_age"
+                android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/map_item_online"
+                android:gravity="center"
+                android:drawableLeft="@mipmap/ic_age"
+                android:text="19岁"
+                android:textColor="@color/dodgerblue"
+                android:textSize="11sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:drawableLeft="@mipmap/ic_item_location"
+                android:id="@+id/tv_location"
+                android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/map_item_location"
+                android:text="嘉兴"
+                android:drawablePadding="3dp"
+                android:textColor="@color/orange"
+                android:textSize="11sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="9dp"
+                android:id="@+id/tv_vip"
+                android:background="@drawable/map_item_vip"
+                android:drawableLeft="@mipmap/ic_vip"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="VIP"
+                android:textColor="@color/red"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@mipmap/ic_active"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:id="@+id/tv_active"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:text="我想吃好吃的我想我想吃好吃的我想吃好吃的好吃的好多好吃的好吃的好多好吃的吃好吃的好吃的好多好吃的好吃的好多好吃的"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -4,6 +4,7 @@
     <color name="alpha">#00000000</color>
     <color name="colorPrimaryDark">#fff</color>
     <color name="colorAccent">#fff</color>
+    <color name="bottom_bg">#aaaaaa</color>
     <color name="white">#FFFFFF</color><!--白色 -->
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color><!--亮黄色 -->
