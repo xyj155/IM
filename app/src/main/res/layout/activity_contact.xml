@@ -17,13 +17,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_gravity="bottom"
         android:background="#fff"
         android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="5"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:weightSum="5">
 
         <ImageView
             android:layout_width="match_parent"
@@ -33,19 +33,19 @@
             android:src="@mipmap/ic_add" />
 
         <EditText
+            android:id="@+id/et_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.8"
             android:background="#fff"
-            android:id="@+id/et_content"
             android:hint="请输入发送消息"
             android:paddingLeft="10dp"
             android:paddingRight="@dimen/dp_10"
             android:textSize="14sp" />
 
         <ImageView
-            android:layout_width="match_parent"
             android:id="@+id/btn_send"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2.1"
             android:padding="5dp"
@@ -53,9 +53,32 @@
             android:src="@mipmap/ic_send" />
     </LinearLayout>
 
-<android.support.v7.widget.Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
-    android:id="@+id/toolbar"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_width="match_parent"
+            android:weightSum="4"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_weight="3"
+                android:text="和某人对话中..."
+                android:gravity="center|left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <com.example.administrator.im.view.CircleImageView
+                android:id="@+id/img_user"
+                android:layout_width="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" />
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
 </RelativeLayout>

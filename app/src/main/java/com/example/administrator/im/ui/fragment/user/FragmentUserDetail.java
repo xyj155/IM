@@ -21,13 +21,17 @@ import com.example.administrator.im.presenter.FragmentUserDetailPresenter;
 import com.example.administrator.im.util.SPUtil;
 import com.example.administrator.im.view.CircleImageView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
 import static android.app.Activity.RESULT_OK;
+import static com.amap.api.mapcore.util.ae.o;
+import static com.example.administrator.im.R.id.map;
 
 /**
  * Created by Administrator on 2018/7/9.
@@ -64,7 +68,10 @@ public class FragmentUserDetail extends BaseFragment implements FragmentUserDeta
 
     @Override
     protected void setUpData() {
-// 自定义图片加载器
+
+        if (SPUtil.getSPValue("userhead") != null) {
+            Glide.with(getActivity()).load(SPUtil.getSPValue("userhead")).asBitmap().into(imgUserHead);
+        }
         ISNav.getInstance().init(new ImageLoader() {
             @Override
             public void displayImage(Context context, String path, ImageView imageView) {
@@ -136,16 +143,20 @@ public class FragmentUserDetail extends BaseFragment implements FragmentUserDeta
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Map<String, String> map = new HashMap<>();
         if (requestCode == REQUEST_LIST_CODE && resultCode == RESULT_OK && data != null) {
             List<String> pathList = data.getStringArrayListExtra("result");
             System.out.println(pathList);
             Glide.with(getActivity()).load(pathList.get(0)).asBitmap().into(imgUserHead);
+            map.put("userhead", pathList.get(0));
             presenter.setUserHeadImg(pathList.get(0), Integer.valueOf(SPUtil.getSPValue("id").toString()));
         } else if (requestCode == REQUEST_CAMERA_CODE && resultCode == RESULT_OK && data != null) {
             String path = data.getStringExtra("result");
-            presenter.setUserHeadImg(path,Integer.valueOf(SPUtil.getSPValue("id").toString()));
+            presenter.setUserHeadImg(path, Integer.valueOf(SPUtil.getSPValue("id").toString()));
+            map.put("userhead", path);
             Glide.with(getActivity()).load(path).asBitmap().into(imgUserHead);
         }
+        SPUtil.saveUserInfor(map);
     }
 
 

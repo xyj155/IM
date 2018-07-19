@@ -6,18 +6,18 @@
     android:layout_marginTop="20dp"
     android:background="#fff"
     android:orientation="vertical">
+
     <include layout="@layout/commontoolbar" />
-    <com.example.administrator.im.view.banner.MZBannerView
-        android:id="@+id/banner_friends"
+
+    <ImageView
+        android:id="@+id/img_ads"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:canLoop="true"
-        app:open_mz_mode="false" />
+        android:layout_height="120dp" />
 
     <View
-        android:background="#fafafa"
         android:layout_width="match_parent"
-        android:layout_height="5dp" />
+        android:layout_height="5dp"
+        android:background="#fafafa" />
 
     <com.example.administrator.im.view.pagerstrip.PagerSlidingTabStrip
         android:id="@+id/tp_community"

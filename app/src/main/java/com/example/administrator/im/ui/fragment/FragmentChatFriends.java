@@ -17,9 +17,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.administrator.im.R;
 import com.example.administrator.im.ui.activity.ContactActivity;
+import com.example.administrator.im.view.CircleImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.administrator.im.R.id.toolbar;
 
 /**
  * Created by Administrator on 2018/7/9.
@@ -27,12 +30,13 @@ import java.util.List;
 
 public class FragmentChatFriends extends Fragment {
     private RecyclerView ry_chat;
-
+private CircleImageView img_user;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_main_chatfriends, container, false);
         ry_chat = inflate.findViewById(R.id.ry_contact);
+        img_user=inflate.findViewById(R.id.img_user);
         ry_chat.setLayoutManager(new LinearLayoutManager(getActivity()));
         List<User> list = new ArrayList<>();
         list.add(new User("架构师", "我们不是男孩子", "http://img3.duitang.com/uploads/item/201603/17/20160317194638_xjJLf.jpeg"));
@@ -56,14 +60,17 @@ public class FragmentChatFriends extends Fragment {
         }
 
         @Override
-        protected void convert(BaseViewHolder helper, User item) {
+        protected void convert(BaseViewHolder helper, final User item) {
             ImageView logoview = helper.getView(R.id.img_head);
             helper.setText(R.id.tv_username, item.getUsernanme())
                     .setText(R.id.tv_style, item.getStyle())
             .setOnClickListener(R.id.ll_contact, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getContext(), ContactActivity.class));
+                    Intent intent=new Intent(getContext(),ContactActivity.class);
+                    intent.putExtra("name",item.getUsernanme());
+                    intent.putExtra("userhead",item.getUserhead());
+                    startActivity(intent);
                 }
             });
             Glide.with(getActivity()).load(item.getUserhead()).asBitmap().into(logoview);

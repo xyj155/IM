@@ -18,6 +18,7 @@ public class SPUtil {
 
     /**
      * 获取上下文
+     *
      * @return
      */
     public static Context getApplicationContext() {
@@ -34,10 +35,12 @@ public class SPUtil {
         while (it.hasNext()) {
             Map.Entry entry = (Map.Entry) it.next();
             String key = entry.getKey().toString();
-            if (entry.getValue() instanceof Boolean){
+            if (entry.getValue() instanceof Boolean) {
                 editor.putBoolean(key, ((Boolean) entry.getValue()).booleanValue());
-            }else if (entry.getValue() instanceof String ){
-                editor.putString(key,  entry.getValue().toString());
+            } else if (entry.getValue() instanceof String) {
+                editor.putString(key, entry.getValue().toString());
+            } else if (entry.getValue() instanceof Integer) {
+                editor.putInt(key, Integer.valueOf(entry.getValue().toString()));
             }
         }
         editor.apply();
@@ -45,8 +48,13 @@ public class SPUtil {
 
     public static Object getSPValue(String key) {
         SharedPreferences sp = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
-        Map<String, ?> all = sp.getAll();
-        Object object = all.get(key);
-        return object;
+        if (!sp.getAll().isEmpty()) {
+            Map<String, ?> all = sp.getAll();
+            Object object = all.get(key);
+            return object;
+        }
+        return null;
+
+
     }
 }

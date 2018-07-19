@@ -1,5 +1,6 @@
 package com.example.administrator.im.ui.activity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -9,10 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.administrator.im.R;
@@ -20,6 +24,7 @@ import com.example.administrator.im.adapter.ChatAdapter;
 import com.example.administrator.im.base.BaseActivity;
 import com.example.administrator.im.entity.ChatEntity;
 import com.example.administrator.im.util.IMUtils;
+import com.example.administrator.im.view.CircleImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,26 +39,35 @@ public class ContactActivity extends AppCompatActivity {
     private EditText et_content;
     private BaseMultiItemQuickAdapter<ChatEntity, BaseViewHolder> mChatAdapter;
     private List<Message> messages = new ArrayList<>();
-    private List<ChatEntity> data=new ArrayList<>();
+    private List<ChatEntity> data = new ArrayList<>();
     private Conversation mConversation;
-
+    private CircleImageView img_userhead;
+private TextView tv_username;
     @Override
-    public void onCreate( Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         initView();
         initData();
+
     }
 
 
     public void initView() {
+        tv_username= (TextView) findViewById(R.id.tv_username);
+        img_userhead = (CircleImageView) findViewById(R.id.img_user);
         ry_contact = (RecyclerView) findViewById(R.id.ry_contact);
         ry_contact.setLayoutManager(new LinearLayoutManager(ContactActivity.this));
         btn_send = (ImageView) findViewById(R.id.btn_send);
         et_content = (EditText) findViewById(R.id.et_content);
-        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setSubtitle("和徐易杰对话中.....");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        Log.i(TAG, "initView: "+name);
+        String userhead = intent.getStringExtra("userhead");
+        tv_username.setText("和" + name + "对话中.....");
         toolbar.setNavigationIcon(R.mipmap.ic_back);
+        Glide.with(ContactActivity.this).load(userhead).asBitmap().into(img_userhead);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +77,7 @@ public class ContactActivity extends AppCompatActivity {
 
     }
 
-
+    private static final String TAG = "ContactActivity";
 
     public void initData() {
         IMUtils.login("123456", "123456", new BasicCallback() {
@@ -80,7 +94,7 @@ public class ContactActivity extends AppCompatActivity {
                             messages.add(message1);
                             for (Message message : messages) {
                                 if (message.getFromName().equals("123456")) {
-                                        data.add(ChatEntity.client(message));
+                                    data.add(ChatEntity.client(message));
                                 } else {
                                     data.add(ChatEntity.service(message));
                                 }
